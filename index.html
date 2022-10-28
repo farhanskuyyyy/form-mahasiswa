@@ -1,119 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portal Mahasiswa - Kelompok 5</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portal Mahasiswa - Kelompok 5</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
-</head>
+    <!-- Import CSS Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- Import CSS Bootstrap -->
+  </head>
 
-<body>
-  <div class="container">
-    <header class="d-flex justify-content-center py-3 border-bottom">
-      <ul class="nav nav-pills">
-        <li class="nav-item"><span>Portal Mahasiswa</span></li>
-      </ul>
-    </header>
-    <section class="row align-items-center g-lg-5 py-5" id="login">
-      <div class="col-lg-7 text-center text-lg-start">
-        <img src="https://i.pinimg.com/originals/3c/c3/b5/3cc3b5ce652a8cbbb09c13abef278524.png" alt="" width="200" />
-        <h1 class="display-4 fw-bold lh-1 mb-3 text-uppercase">
-          Selamat Datang Mahasiswa S3M
-        </h1>
-        <p class="col-lg-10 fs-4">
-          Teknik Informatika Universitas Indraprasta PGRI
-        </p>
-      </div>
-      <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light" id="form-login">
-          <p>Silahkan Login</p>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="name@example.com" />
-            <label for="email">Email address</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Password" />
-            <label for="password">Password</label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">
-            Login
-          </button>
-        </form>
-      </div>
-    </section>
-    <section class="align-items-center g-lg-5 py-5 d-none" id="content">
-      <div class="row">
-        <div class="col-md-5 col-lg-5 mt-4">
-          <h4>Form Mahasiswa</h4>
-          <form class="row g-3 border rounded-3 p-2 m-2" id="form-mahasiswa">
-            <div class="col-md-12">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Bill Gates" required />
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="d-flex justify-content-center py-3 border-bottom">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><span>Portal Mahasiswa</span></li>
+        </ul>
+      </header>
+      <!-- End Header -->
+
+      <!-- Login Page -->
+      <section class="row align-items-center g-lg-5 py-5" id="login">
+        <div class="col-lg-7 text-center text-lg-start">
+          <img
+            src="https://i.pinimg.com/originals/3c/c3/b5/3cc3b5ce652a8cbbb09c13abef278524.png"
+            alt=""
+            width="200"
+          />
+          <h1 class="display-4 fw-bold lh-1 mb-3 text-uppercase">
+            Selamat Datang Mahasiswa S3M
+          </h1>
+          <p class="col-lg-10 fs-4">
+            Teknik Informatika Universitas Indraprasta PGRI
+          </p>
+        </div>
+
+        <!-- Form Login -->
+        <div class="col-md-10 mx-auto col-lg-5">
+          <form class="p-4 p-md-5 border rounded-3 bg-light" id="form-login">
+            <p>Silahkan Login</p>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="name@example.com"
+              />
+              <label for="email">Email address</label>
             </div>
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Depok" required />
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+              />
+              <label for="password">Password</label>
             </div>
-            <div class="col-md-6">
-              <label for="kelas" class="form-label">Kelas</label>
-              <input type="text" class="form-control" id="kelas" placeholder="S3M" required />
-            </div>
-            <div class="col-md-6">
-              <label for="jenis-kelas" class="form-label">Jenis Kelas</label>
-              <select id="jenis-kelas" class="form-select">
-                <option value="Reguler" selected>Reguler</option>
-                <option value="Sore">Sore</option>
-                <option value="Ekstensi">Ekstensi</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label for="motivasi" class="form-label">Motivasi</label>
-              <input type="text" class="form-control" id="motivasi" placeholder="Bekerja Bekerja Bekerja" required />
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">
+              Login
+            </button>
           </form>
         </div>
-        <div class="col-md-7 col-lg-7 mt-4">
-          <h4>List Mahasiswa</h4>
-          <div class="list-group" id="list-mahasiswa"></div>
+        <!-- End Form Login -->
+      </section>
+      <!-- End Login Page -->
+
+      <!-- Page Form Mahasiswa -->
+      <section class="align-items-center g-lg-5 py-5 d-none" id="content">
+        <div class="row">
+          <!-- Inputan Mahasiswa -->
+          <div class="col-md-5 col-lg-5 mt-4">
+            <h4>Form Mahasiswa</h4>
+            <form class="row g-3 border rounded-3 p-2 m-2" id="form-mahasiswa">
+              <div class="col-md-12">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Bill Gates"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  placeholder="Depok"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="kelas" class="form-label">Kelas</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="kelas"
+                  placeholder="S3M"
+                  required
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="jenis-kelas" class="form-label">Jenis Kelas</label>
+                <select id="jenis-kelas" class="form-select">
+                  <option value="Reguler" selected>Reguler</option>
+                  <option value="Sore">Sore</option>
+                  <option value="Ekstensi">Ekstensi</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="motivasi" class="form-label">Motivasi</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="motivasi"
+                  placeholder="Bekerja Bekerja Bekerja"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- End Inputan Mahasiswa -->
+
+          <!-- List Mahasiswa -->
+          <div class="col-md-7 col-lg-7 mt-4">
+            <h4>List Mahasiswa</h4>
+            <div class="list-group" id="list-mahasiswa"></div>
+          </div>
+          <!-- List Mahasiswa -->
+        </div>
+      </section>
+      <!-- End Page Form Mahasiswa -->
+    </div>
+
+    <!-- Loading -->
+    <div class="modal" tabindex="-1" id="loading">
+      <div class="modal-dialog modal-dialog-centered justify-content-center">
+        <div class="spinner-grow" role="status">
+          <span class="sr-only"></span>
         </div>
       </div>
-    </section>
-  </div>
-  <div class="modal" tabindex="-1" id="loading">
-    <div class="modal-dialog modal-dialog-centered justify-content-center">
-      <div class="spinner-grow" role="status">
-        <span class="sr-only"></span>
-      </div>
     </div>
-  </div>
-  <footer class="py-3">
-    <p class="text-center text-muted">&copy; 2022 Kelompok 5</p>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-    crossorigin="anonymous"></script>
-</body>
+    <!-- End Loading -->
 
+    <!-- Footer -->
+    <footer class="py-3">
+      <p class="text-center text-muted">&copy; 2022 Kelompok 5</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Import Javascript Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Import Javascript Bootstrap -->
+  </body>
 </html>
 
 <script>
-  var formLogin = document.getElementById("form-login");
-  var formMahasiswa = document.getElementById("form-mahasiswa");
   var loginPage = document.getElementById("login");
   var contentPage = document.getElementById("content");
+
+  var formLogin = document.getElementById("form-login");
+  var formMahasiswa = document.getElementById("form-mahasiswa");
   var listMahasiswa = document.getElementById("list-mahasiswa");
+  var kelas = [];
 
   var myModal = new bootstrap.Modal(document.getElementById("loading"), {
     keyboard: false,
   });
 
-  var kelas = [];
-  loadDataMahasiswa();
+  function login(email, password) {
+    if (email == "admin@gmail.com" && password == "admin123") {
+      loadDataMahasiswa();
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   function loadDataMahasiswa() {
     listMahasiswa.innerHTML = "";
@@ -132,14 +210,6 @@
                     </a>
                 `;
       });
-    }
-  }
-
-  function login(email, password) {
-    if (email == "admin@gmail.com" && password == "admin123") {
-      return true;
-    } else {
-      return false;
     }
   }
 
