@@ -51,6 +51,7 @@
                 class="form-control"
                 id="email"
                 placeholder="name@example.com"
+                value="admin@gmail.com"
               />
               <label for="email">Email address</label>
             </div>
@@ -60,6 +61,7 @@
                 class="form-control"
                 id="password"
                 placeholder="Password"
+                value="admin123"
               />
               <label for="password">Password</label>
             </div>
@@ -178,12 +180,21 @@
   var formLogin = document.getElementById("form-login");
   var formMahasiswa = document.getElementById("form-mahasiswa");
   var listMahasiswa = document.getElementById("list-mahasiswa");
-  var kelas = [];
-
+  var kelas = [
+    {
+      name : "Farhan",
+      address : "Depok",
+      kelas : "S3M",
+      jenisKelas : "Reguler",
+      motivasi : "Belajar",
+    }
+  ];
+  loadDataMahasiswa();
+  
   var myModal = new bootstrap.Modal(document.getElementById("loading"), {
     keyboard: false,
   });
-
+  
   function login(email, password) {
     if (email == "admin@gmail.com" && password == "admin123") {
       loadDataMahasiswa();
@@ -198,19 +209,22 @@
     if (kelas.length == 0) {
       listMahasiswa.innerHTML += "Data Tidak Ada";
     } else {
-      kelas.forEach((mahasiswa) => {
+      Object.entries(kelas).forEach(entry => {
+      const [key, mahasiswa] = entry;
         listMahasiswa.innerHTML += `
-                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                    <div class="d-flex w-100 justify-content-between">
+                    <a href="/" class="list-group-item list-group-item-action mahasiswa-card" data-id="${key}">
+                      <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">${mahasiswa.name}</h5>
                         <small>${mahasiswa.kelas} - ${mahasiswa.jenisKelas}</small>
-                    </div>
-                    <p class="mb-1">${mahasiswa.address}</p>
-                    <small class="fst-italic">"${mahasiswa.motivasi}"</small>
+                      </div>
+                      <p class="mb-1">${mahasiswa.address}</p>
+                      <small class="fst-italic">"${mahasiswa.motivasi}"</small>
+                      <img src="trash.png" alt="" style="width:20px;cursor:pointer" class="btn-remove float-end" data-id="${key}">
                     </a>
                 `;
       });
     }
+    loadEvent();
   }
 
   function insert() {
@@ -225,12 +239,59 @@
     kelas.push(mahasiswa);
   }
 
+  function loadUpdate(id){
+    let data = kelas[id];
+    document.getElementById("name").value = data.name
+    document.getElementById("address").value = data.address
+    document.getElementById("kelas").value = data.kelas
+    document.getElementById("motivasi").value = data.motivasi
+    document.getElementById("jenis-kelas").value = data.jenisKelas
+    formMahasiswa.setAttribute("data-id", id);
+  }
+  
+  function update(id) {
+    kelas[id] = {
+      name: document.getElementById("name").value,
+      address: document.getElementById("address").value,
+      kelas: document.getElementById("kelas").value,
+      motivasi: document.getElementById("motivasi").value,
+      jenisKelas: document.getElementById("jenis-kelas").value,
+    };
+
+    formMahasiswa.removeAttribute("data-id");
+  }
+
+  function deleteObj(key){
+    kelas.splice(key, 1);
+    formMahasiswa.reset();
+  }
+
   function loading(action) {
     if (action == "show") {
       myModal.show();
     } else {
       myModal.hide();
     }
+  }
+
+  function loadEvent(){
+      const removeButtons = document.querySelectorAll('.btn-remove');
+      removeButtons.forEach(btn => {
+          btn.addEventListener('click',function(){
+              id = btn.getAttribute('data-id');
+              deleteObj(id)
+              loadDataMahasiswa();
+          });
+      });
+      
+      const mahasiswaCard = document.querySelectorAll('.mahasiswa-card');
+      mahasiswaCard.forEach(card => {
+          card.addEventListener('click',function(e){
+            e.preventDefault()
+              id = card.getAttribute('data-id');
+              loadUpdate(id)
+          });
+      });
   }
 
   // event login
@@ -256,8 +317,12 @@
   // event input mahasiswa
   formMahasiswa.addEventListener("submit", function (e) {
     e.preventDefault();
-
-    insert();
+    var id = this.getAttribute('data-id');
+    if (id != null) {
+      update(id);
+    }else{
+      insert();
+    }
 
     loading("show");
     setTimeout(() => {
